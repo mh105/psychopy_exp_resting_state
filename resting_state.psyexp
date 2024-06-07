@@ -26,7 +26,7 @@
     <Param val="False" valType="bool" updates="None" name="Show mouse"/>
     <Param val="height" valType="str" updates="None" name="Units"/>
     <Param val="" valType="str" updates="None" name="Use version"/>
-    <Param val="[2560, 1440]" valType="list" updates="None" name="Window size (pixels)"/>
+    <Param val="[3440, 1440]" valType="list" updates="None" name="Window size (pixels)"/>
     <Param val="none" valType="str" updates="None" name="backgroundFit"/>
     <Param val="" valType="str" updates="None" name="backgroundImg"/>
     <Param val="avg" valType="str" updates="None" name="blendMode"/>
@@ -148,7 +148,7 @@
         <Param val="read_welcome" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="resource/welcome.wav" valType="str" updates="set every repeat" name="sound"/>
-        <Param val="7.0" valType="code" updates="None" name="speakerIndex"/>
+        <Param val="-1" valType="code" updates="None" name="speakerIndex"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.8" valType="code" updates="None" name="startVal"/>
@@ -229,7 +229,7 @@
         <Param val="read_et" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="resource/eyetrack_calibrate_instruct.wav" valType="str" updates="set every repeat" name="sound"/>
-        <Param val="7.0" valType="code" updates="None" name="speakerIndex"/>
+        <Param val="-1" valType="code" updates="None" name="speakerIndex"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.8" valType="code" updates="None" name="startVal"/>
@@ -314,7 +314,7 @@
         <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
         <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
         <Param val="" valType="str" updates="constant" name="desc"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="True" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="_instruct_val" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
@@ -377,7 +377,7 @@
         <Param val="read_et_2" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="resource/eyetrack_validate_instruct.wav" valType="str" updates="set every repeat" name="sound"/>
-        <Param val="7.0" valType="code" updates="None" name="speakerIndex"/>
+        <Param val="-1" valType="code" updates="None" name="speakerIndex"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="condition" valType="str" updates="None" name="startType"/>
         <Param val="$text_et_2.status == STARTED" valType="code" updates="None" name="startVal"/>
@@ -395,7 +395,7 @@
         <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
         <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
         <Param val="" valType="str" updates="constant" name="desc"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="True" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="_et_check" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
@@ -458,7 +458,7 @@
         <Param val="read_et_3" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="resource/eyetrack_check.wav" valType="str" updates="set every repeat" name="sound"/>
-        <Param val="7.0" valType="code" updates="None" name="speakerIndex"/>
+        <Param val="-1" valType="code" updates="None" name="speakerIndex"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="condition" valType="str" updates="None" name="startType"/>
         <Param val="$text_et_3.status == STARTED" valType="code" updates="None" name="startVal"/>
@@ -493,7 +493,7 @@
         <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
         <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
         <Param val="" valType="str" updates="constant" name="desc"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="True" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="_instruct_repeat" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
@@ -556,7 +556,7 @@
         <Param val="read_et_4" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="resource/eyetrack_repeat.wav" valType="str" updates="set every repeat" name="sound"/>
-        <Param val="7.0" valType="code" updates="None" name="speakerIndex"/>
+        <Param val="-1" valType="code" updates="None" name="speakerIndex"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="condition" valType="str" updates="None" name="startType"/>
         <Param val="$text_et_4.status == STARTED" valType="code" updates="None" name="startVal"/>
@@ -685,7 +685,7 @@
         <Param val="read_start" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="resource/ready_to_begin.wav" valType="str" updates="set every repeat" name="sound"/>
-        <Param val="7.0" valType="code" updates="None" name="speakerIndex"/>
+        <Param val="-1" valType="code" updates="None" name="speakerIndex"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.2" valType="code" updates="None" name="startVal"/>
@@ -766,7 +766,7 @@
         <Param val="read_instruct" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="resource/instruct_ec_reading_audio.wav" valType="str" updates="set every repeat" name="sound"/>
-        <Param val="7.0" valType="code" updates="None" name="speakerIndex"/>
+        <Param val="-1" valType="code" updates="None" name="speakerIndex"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.8" valType="code" updates="None" name="startVal"/>
@@ -827,7 +827,7 @@
         <Param val="tone_finish" valType="code" updates="None" name="name"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="Bsh" valType="str" updates="set every repeat" name="sound"/>
-        <Param val="7.0" valType="code" updates="None" name="speakerIndex"/>
+        <Param val="-1" valType="code" updates="None" name="speakerIndex"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="180.0" valType="code" updates="None" name="startVal"/>
@@ -925,7 +925,7 @@
         <Param val="read_instruct_2" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="resource/instruct_eo_reading_audio.wav" valType="str" updates="set every repeat" name="sound"/>
-        <Param val="7.0" valType="code" updates="None" name="speakerIndex"/>
+        <Param val="-1" valType="code" updates="None" name="speakerIndex"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.8" valType="code" updates="None" name="startVal"/>
@@ -1123,7 +1123,7 @@
         <Param val="read_thank_you" valType="code" updates="None" name="name"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="resource/thank_you.wav" valType="str" updates="set every repeat" name="sound"/>
-        <Param val="7.0" valType="code" updates="None" name="speakerIndex"/>
+        <Param val="-1" valType="code" updates="None" name="speakerIndex"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.2" valType="code" updates="None" name="startVal"/>
@@ -1139,7 +1139,7 @@
       <Param name="borderWidth" updates="None" val="2" valType="num"/>
       <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
       <Param name="cursorFillColor" updates="None" val="green" valType="color"/>
-      <Param name="disabled" updates="None" val="False" valType="bool"/>
+      <Param name="disabled" updates="None" val="True" valType="bool"/>
       <Param name="expandDur" updates="None" val="1" valType="num"/>
       <Param name="expandScale" updates="None" val="1.5" valType="num"/>
       <Param name="fillColor" updates="None" val="green" valType="color"/>
@@ -1173,7 +1173,7 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="False" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="99" valType="num"/>
+      <Param name="nReps" updates="None" val="1" valType="num"/>
       <Param name="name" updates="None" val="repeat_cal" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
