@@ -1,8 +1,8 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy3 Experiment Builder (v2024.1.4),
-    on Mon May 20 20:02:00 2024
+This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
+    on Thu Jun  6 18:01:00 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -34,7 +34,6 @@ import psychopy.iohub as io
 from psychopy.hardware import keyboard
 
 # Run 'Before Experiment' code from eeg_start
-from psychopy import core
 import pyxid2
 
 devices = pyxid2.get_xid_devices()
@@ -76,7 +75,7 @@ deviceManager = hardware.DeviceManager()
 # ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 # store info about the experiment session
-psychopyVersion = '2024.1.4'
+psychopyVersion = '2024.1.5'
 expName = 'resting_state'  # from the Builder filename that created this script
 # information about this experiment
 expInfo = {
@@ -97,7 +96,7 @@ or run the experiment with `--pilot` as an argument. To change what pilot
 PILOTING = core.setPilotModeFromArgs()
 # start off with values from experiment settings
 _fullScr = True
-_winSize = [1920, 1080]
+_winSize = [2560, 1440]
 _loggingLevel = logging.getLevel('warning')
 # if in pilot mode, apply overrides according to preferences
 if PILOTING:
@@ -753,6 +752,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # --- Prepare to start Routine "_welcome" ---
     continueRoutine = True
     # update component parameters for each repeat
+    # create starting attributes for key_welcome
     key_welcome.keys = []
     key_welcome.rt = []
     _key_welcome_allKeys = []
@@ -882,6 +882,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # --- Prepare to start Routine "_instruct_cal" ---
     continueRoutine = True
     # update component parameters for each repeat
+    # create starting attributes for key_et
     key_et.keys = []
     key_et.rt = []
     _key_et_allKeys = []
@@ -1148,6 +1149,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # --- Prepare to start Routine "_instruct_val" ---
         continueRoutine = True
         # update component parameters for each repeat
+        # create starting attributes for key_et_2
         key_et_2.keys = []
         key_et_2.rt = []
         _key_et_2_allKeys = []
@@ -1300,6 +1302,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # --- Prepare to start Routine "_et_check" ---
         continueRoutine = True
         # update component parameters for each repeat
+        # create starting attributes for key_et_3
         key_et_3.keys = []
         key_et_3.rt = []
         _key_et_3_allKeys = []
@@ -1437,6 +1440,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # update component parameters for each repeat
         # skip this Routine if its 'Skip if' condition is True
         continueRoutine = continueRoutine and not (whether_repeat == 0)
+        # create starting attributes for key_et_4
         key_et_4.keys = []
         key_et_4.rt = []
         _key_et_4_allKeys = []
@@ -1726,6 +1730,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # --- Prepare to start Routine "instruct_ec" ---
     continueRoutine = True
     # update component parameters for each repeat
+    # create starting attributes for key_instruct
     key_instruct.keys = []
     key_instruct.rt = []
     _key_instruct_allKeys = []
@@ -2000,6 +2005,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # --- Prepare to start Routine "instruct_eo" ---
     continueRoutine = True
     # update component parameters for each repeat
+    # create starting attributes for key_instruct_2
     key_instruct_2.keys = []
     key_instruct_2.rt = []
     _key_instruct_2_allKeys = []
@@ -2495,9 +2501,6 @@ def endExperiment(thisExp, win=None):
         win.flip()
     # mark experiment handler as finished
     thisExp.status = FINISHED
-    # shut down eyetracker, if there is one
-    if deviceManager.getDevice('eyetracker') is not None:
-        deviceManager.removeDevice('eyetracker')
     logging.flush()
 
 
@@ -2519,9 +2522,6 @@ def quit(thisExp, win=None, thisSession=None):
         # and win.timeOnFlip() tasks get executed before quitting
         win.flip()
         win.close()
-    # shut down eyetracker, if there is one
-    if deviceManager.getDevice('eyetracker') is not None:
-        deviceManager.removeDevice('eyetracker')
     logging.flush()
     if thisSession is not None:
         thisSession.stop()

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" ?>
-<PsychoPy2experiment encoding="utf-8" version="2024.1.4">
+<PsychoPy2experiment encoding="utf-8" version="2024.1.5">
   <Settings>
     <Param val="4" valType="str" updates="None" name="Audio latency priority"/>
     <Param val="ptb" valType="str" updates="None" name="Audio lib"/>
@@ -115,7 +115,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="Welcome! This task will take approximately 7 minutes.&amp;#10;&amp;#10;Before we explain the task, we need to first calibrate the eyetracking camera. Please sit in a comfortable position with your head on the chin rest. Once we begin, it is important that you stay in the same position throughout this task.&amp;#10;&amp;#10;Please take a moment to adjust the chair height, chin rest, and sitting posture. Make sure that you feel comfortable and can stay still for a while.&amp;#10;&amp;#10;&amp;#10;When you are ready, let us know." valType="str" updates="constant" name="text"/>
+        <Param val="Welcome! This task will take approximately 7 minutes.&amp;#10;&amp;#10;Before we explain the task, we need to first calibrate the eyetracking camera. Please sit in a comfortable position with your head on the chin rest. Once we begin, it is important that you stay in the same position throughout this task.&amp;#10;&amp;#10;Please take a moment to adjust the chair height, chin rest, and sitting posture. Make sure that you feel comfortable and can stay still for a while.&amp;#10;&amp;#10;&amp;#10;When you are ready, press the spacebar" valType="str" updates="constant" name="text"/>
         <Param val="norm" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="1.8" valType="num" updates="constant" name="wrapWidth"/>
@@ -196,7 +196,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="On the next display, you will see a target circle moving around the screen. Please try to track it with your eyes.&amp;#10;&amp;#10;Make sure to keep looking at the circle when it stops, and follow it when it moves.&amp;#10;&amp;#10;&amp;#10;Press the spacebar to begin" valType="str" updates="constant" name="text"/>
+        <Param val="During the calibration, you will see a target circle moving around the screen. Please try to track it with your eyes.&amp;#10;&amp;#10;Make sure to keep looking at the circle when it stops, and follow it when it moves. It is important that you keep your head on the chin rest once this part begins.&amp;#10;&amp;#10;&amp;#10;Press the spacebar when you are ready, and our team will start the calibration for you" valType="str" updates="constant" name="text"/>
         <Param val="norm" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="1.8" valType="num" updates="constant" name="wrapWidth"/>
@@ -388,34 +388,6 @@
         <Param val="1" valType="num" updates="constant" name="volume"/>
       </SoundComponent>
     </Routine>
-    <EyetrackerValidationRoutine name="_et_val">
-      <Param name="borderColor" updates="None" val="white" valType="color"/>
-      <Param name="borderWidth" updates="None" val="2" valType="num"/>
-      <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
-      <Param name="cursorFillColor" updates="None" val="green" valType="color"/>
-      <Param name="disabled" updates="None" val="False" valType="bool"/>
-      <Param name="expandDur" updates="None" val="1" valType="num"/>
-      <Param name="expandScale" updates="None" val="1.5" valType="num"/>
-      <Param name="fillColor" updates="None" val="green" valType="color"/>
-      <Param name="innerBorderColor" updates="None" val="black" valType="color"/>
-      <Param name="innerBorderWidth" updates="None" val="2" valType="num"/>
-      <Param name="innerFillColor" updates="None" val="black" valType="color"/>
-      <Param name="innerRadius" updates="None" val="0.005" valType="num"/>
-      <Param name="movementAnimation" updates="None" val="True" valType="bool"/>
-      <Param name="movementDur" updates="None" val="1.0" valType="num"/>
-      <Param name="name" updates="None" val="_et_val" valType="code"/>
-      <Param name="outerRadius" updates="None" val="0.015" valType="num"/>
-      <Param name="progressMode" updates="None" val="time" valType="str"/>
-      <Param name="randomisePos" updates="None" val="True" valType="bool"/>
-      <Param name="saveAsImg" updates="None" val="True" valType="bool"/>
-      <Param name="showResults" updates="None" val="True" valType="bool"/>
-      <Param name="targetDelay" updates="None" val="1.0" valType="num"/>
-      <Param name="targetDur" updates="None" val="1.5" valType="num"/>
-      <Param name="targetLayout" updates="None" val="NINE_POINTS" valType="str"/>
-      <Param name="targetPositions" updates="None" val="NINE_POINTS" valType="list"/>
-      <Param name="textColor" updates="None" val="white" valType="color"/>
-      <Param name="units" updates="None" val="from exp settings" valType="str"/>
-    </EyetrackerValidationRoutine>
     <Routine name="_et_check">
       <RoutineSettingsComponent name="_et_check" plugin="None">
         <Param val="none" valType="str" updates="None" name="backgroundFit"/>
@@ -689,7 +661,7 @@
         <Param val="eyetrack_start" valType="code" updates="None" name="name"/>
       </CodeComponent>
       <CodeComponent name="eeg_start" plugin="None">
-        <Param val="from psychopy import core&amp;#10;import pyxid2&amp;#10;&amp;#10;devices = pyxid2.get_xid_devices()&amp;#10;&amp;#10;if devices:&amp;#10;    dev = devices[0]&amp;#10;    assert dev.device_name == 'Cedrus C-POD', &quot;Incorrect C-POD detected.&quot;&amp;#10;    dev.set_pulse_duration(50)  # set pulse duration to 50ms&amp;#10;&amp;#10;    # Start EEG recording&amp;#10;    dev.activate_line(bitmask=126)  # trigger 126 will start EEG&amp;#10;&amp;#10;    # Marching lights test&amp;#10;    print(&quot;C-POD&lt;-&gt;eego 7-bit trigger lines test...&quot;)&amp;#10;    for line in range(1, 8):  # raise lines 1-7 one at a time&amp;#10;        print(&quot;raising line {} (bitmask {})&quot;.format(line, 2 ** (line-1)))&amp;#10;        dev.activate_line(lines=line)&amp;#10;        core.wait(0.5)  # wait 500ms between two consecutive triggers&amp;#10;    dev.con.set_digio_lines_to_mask(0)  # XidDevice.clear_all_lines()&amp;#10;&amp;#10;else:&amp;#10;    # Dummy XidDevice for code components to run without C-POD connected&amp;#10;    class dummyXidDevice(object):&amp;#10;        def __init__(self):&amp;#10;            print(&quot;Creating a dummy device object to run the experiment. &quot;&amp;#10;                  &quot;Please double check if a C-POD should be connected.\n&quot;)&amp;#10;            pass&amp;#10;        def activate_line(self, lines=None, bitmask=None):&amp;#10;            pass&amp;#10;&amp;#10;&amp;#10;    print(&quot;** WARNING: No C-POD connected for this session! &quot;&amp;#10;          &quot;You must start/stop EEG recording manually!&quot;)&amp;#10;    dev = dummyXidDevice()&amp;#10;" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="import pyxid2&amp;#10;&amp;#10;devices = pyxid2.get_xid_devices()&amp;#10;&amp;#10;if devices:&amp;#10;    dev = devices[0]&amp;#10;    assert dev.device_name == 'Cedrus C-POD', &quot;Incorrect C-POD detected.&quot;&amp;#10;    dev.set_pulse_duration(50)  # set pulse duration to 50ms&amp;#10;&amp;#10;    # Start EEG recording&amp;#10;    dev.activate_line(bitmask=126)  # trigger 126 will start EEG&amp;#10;&amp;#10;    # Marching lights test&amp;#10;    print(&quot;C-POD&lt;-&gt;eego 7-bit trigger lines test...&quot;)&amp;#10;    for line in range(1, 8):  # raise lines 1-7 one at a time&amp;#10;        print(&quot;raising line {} (bitmask {})&quot;.format(line, 2 ** (line-1)))&amp;#10;        dev.activate_line(lines=line)&amp;#10;        core.wait(0.5)  # wait 500ms between two consecutive triggers&amp;#10;    dev.con.set_digio_lines_to_mask(0)  # XidDevice.clear_all_lines()&amp;#10;&amp;#10;else:&amp;#10;    # Dummy XidDevice for code components to run without C-POD connected&amp;#10;    class dummyXidDevice(object):&amp;#10;        def __init__(self):&amp;#10;            print(&quot;Creating a dummy device object to run the experiment. &quot;&amp;#10;                  &quot;Please double check if a C-POD should be connected.\n&quot;)&amp;#10;            pass&amp;#10;        def activate_line(self, lines=None, bitmask=None):&amp;#10;            pass&amp;#10;&amp;#10;&amp;#10;    print(&quot;** WARNING: No C-POD connected for this session! &quot;&amp;#10;          &quot;You must start/stop EEG recording manually!&quot;)&amp;#10;    dev = dummyXidDevice()&amp;#10;" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
@@ -1162,6 +1134,34 @@
         <Param val="1" valType="num" updates="constant" name="volume"/>
       </SoundComponent>
     </Routine>
+    <EyetrackerValidationRoutine name="_et_val">
+      <Param name="borderColor" updates="None" val="white" valType="color"/>
+      <Param name="borderWidth" updates="None" val="2" valType="num"/>
+      <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
+      <Param name="cursorFillColor" updates="None" val="green" valType="color"/>
+      <Param name="disabled" updates="None" val="False" valType="bool"/>
+      <Param name="expandDur" updates="None" val="1" valType="num"/>
+      <Param name="expandScale" updates="None" val="1.5" valType="num"/>
+      <Param name="fillColor" updates="None" val="green" valType="color"/>
+      <Param name="innerBorderColor" updates="None" val="black" valType="color"/>
+      <Param name="innerBorderWidth" updates="None" val="2" valType="num"/>
+      <Param name="innerFillColor" updates="None" val="black" valType="color"/>
+      <Param name="innerRadius" updates="None" val="0.005" valType="num"/>
+      <Param name="movementAnimation" updates="None" val="True" valType="bool"/>
+      <Param name="movementDur" updates="None" val="1.0" valType="num"/>
+      <Param name="name" updates="None" val="_et_val" valType="code"/>
+      <Param name="outerRadius" updates="None" val="0.015" valType="num"/>
+      <Param name="progressMode" updates="None" val="time" valType="str"/>
+      <Param name="randomisePos" updates="None" val="True" valType="bool"/>
+      <Param name="saveAsImg" updates="None" val="True" valType="bool"/>
+      <Param name="showResults" updates="None" val="True" valType="bool"/>
+      <Param name="targetDelay" updates="None" val="1.0" valType="num"/>
+      <Param name="targetDur" updates="None" val="1.5" valType="num"/>
+      <Param name="targetLayout" updates="None" val="NINE_POINTS" valType="str"/>
+      <Param name="targetPositions" updates="None" val="NINE_POINTS" valType="list"/>
+      <Param name="textColor" updates="None" val="white" valType="color"/>
+      <Param name="units" updates="None" val="from exp settings" valType="str"/>
+    </EyetrackerValidationRoutine>
   </Routines>
   <Flow>
     <Routine name="_welcome"/>
