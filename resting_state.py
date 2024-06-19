@@ -1,8 +1,8 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy3 Experiment Builder (v2024.2.0dev2),
-    on Sat Jun 15 11:54:11 2024
+This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
+    on Wed Jun 19 09:46:20 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -74,7 +74,7 @@ deviceManager = hardware.DeviceManager()
 # ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 # store info about the experiment session
-psychopyVersion = '2024.2.0dev2'
+psychopyVersion = '2024.1.5'
 expName = 'resting_state'  # from the Builder filename that created this script
 # information about this experiment
 expInfo = {
@@ -96,6 +96,7 @@ PILOTING = core.setPilotModeFromArgs()
 # start off with values from experiment settings
 _fullScr = True
 _winSize = [2560, 1440]
+_loggingLevel = logging.getLevel('warning')
 # if in pilot mode, apply overrides according to preferences
 if PILOTING:
     # force windowed mode
@@ -103,6 +104,10 @@ if PILOTING:
         _fullScr = False
         # set window size
         _winSize = prefs.piloting['forcedWindowSize']
+    # override logging level
+    _loggingLevel = logging.getLevel(
+        prefs.piloting['pilotLoggingLevel']
+    )
 
 def showExpInfoDlg(expInfo):
     """
@@ -151,7 +156,7 @@ def setupData(expInfo, dataDir=None):
     # data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
     if dataDir is None:
         dataDir = _thisDir
-    filename = u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])
+    filename = u'data/%s/%s_%s_%s' % (expInfo['participant'], expInfo['participant'], expName, expInfo['session'])
     # make sure filename is relative to dataDir
     if os.path.isabs(filename):
         dataDir = os.path.commonprefix([dataDir, filename])
@@ -185,23 +190,10 @@ def setupLogging(filename):
     psychopy.logging.LogFile
         Text stream to receive inputs from the logging system.
     """
-    # set how much information should be printed to the console / app
-    if PILOTING:
-        logging.console.setLevel(
-            prefs.piloting['pilotConsoleLoggingLevel']
-        )
-    else:
-        logging.console.setLevel('warning')
+    # this outputs to the screen, not a file
+    logging.console.setLevel(_loggingLevel)
     # save a log file for detail verbose info
-    logFile = logging.LogFile(filename+'.log')
-    if PILOTING:
-        logFile.setLevel(
-            prefs.piloting['pilotLoggingLevel']
-        )
-    else:
-        logFile.setLevel(
-            logging.getLevel('warning')
-        )
+    logFile = logging.LogFile(filename+'.log', level=_loggingLevel)
     
     return logFile
 
@@ -285,8 +277,8 @@ def setupDevices(expInfo, thisExp, win):
             'sampling_rate': 1000.0,
             'track_eyes': 'LEFT_EYE',
             'sample_filtering': {
-                'sample_filtering': 'FILTER_LEVEL_OFF',
-                'elLiveFiltering': 'FILTER_LEVEL_OFF',
+                'FILTER_FILE': 'FILTER_LEVEL_OFF',
+                'FILTER_ONLINE': 'FILTER_LEVEL_OFF',
             },
             'vog_settings': {
                 'pupil_measure_types': 'PUPIL_DIAMETER',
@@ -299,10 +291,12 @@ def setupDevices(expInfo, thisExp, win):
     # Setup iohub keyboard
     ioConfig['Keyboard'] = dict(use_keymap='psychopy')
     
-    ioSession = '1'
-    if 'session' in expInfo:
-        ioSession = str(expInfo['session'])
+    # Setup iohub experiment
+    ioConfig['Experiment'] = dict(filename=thisExp.dataFileName)
+    
+    # Start ioHub server
     ioServer = io.launchHubServer(window=win, **ioConfig)
+    
     # store ioServer object in the device manager
     deviceManager.ioServer = ioServer
     deviceManager.devices['eyetracker'] = ioServer.getDevice('tracker')
@@ -483,7 +477,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     text_welcome = visual.TextStim(win=win, name='text_welcome',
         text='Welcome! This task will take approximately 7 minutes.\n\nBefore we explain the task, we need to first calibrate the eyetracking camera. Please sit in a comfortable position with your head on the chin rest. Once we begin, it is important that you stay in the same position throughout this task.\n\nPlease take a moment to adjust the chair height, chin rest, and sitting posture. Make sure that you feel comfortable and can stay still for a while.\n\n\nWhen you are ready, press the spacebar',
         font='Arial',
-        units='norm', pos=(0, 0), draggable=False, height=0.1, wrapWidth=1.8, ori=0.0, 
+        units='norm', pos=(0, 0), height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -501,7 +495,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     text_et = visual.TextStim(win=win, name='text_et',
         text='During the calibration, you will see a target circle moving around the screen. Please try to track it with your eyes.\n\nMake sure to keep looking at the circle when it stops, and follow it when it moves. It is important that you keep your head on the chin rest once this part begins.\n\n\nPress the spacebar when you are ready, and our team will start the calibration for you',
         font='Arial',
-        units='norm', pos=(0, 0), draggable=False, height=0.1, wrapWidth=1.8, ori=0.0, 
+        units='norm', pos=(0, 0), height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -519,7 +513,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     text_mask = visual.TextStim(win=win, name='text_mask',
         text=None,
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -528,7 +522,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     text_start = visual.TextStim(win=win, name='text_start',
         text='We are now ready to begin...',
         font='Arial',
-        units='norm', pos=(0, 0), draggable=False, height=0.1, wrapWidth=1.8, ori=0.0, 
+        units='norm', pos=(0, 0), height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -570,7 +564,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     text_instruct = visual.TextStim(win=win, name='text_instruct',
         text='This is a resting task. It is designed to measure brain waves when we are not thinking hard or trying to do anything.\n\nFor the next 3 minutes, please close your eyes, and relax. Just let your mind wander. Try not to move, and try to stay awake.\n\nWhen the 3-minute is up, you will hear a tone to indicate the completion.\n\n\nPress the spacebar to begin',
         font='Arial',
-        units='norm', pos=(0, 0), draggable=False, height=0.1, wrapWidth=1.8, ori=0.0, 
+        units='norm', pos=(0, 0), height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -588,7 +582,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     text_ec = visual.TextStim(win=win, name='text_ec',
         text=None,
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -605,7 +599,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     text_instruct_2 = visual.TextStim(win=win, name='text_instruct_2',
         text='Great! That is the first of two parts in this task.\n\nFor the next 3 minutes, please look at the fixation cross on the screen, and relax. As before, just let your mind wander. You may blink normally, but try to keep your eyes open, and try not to move.\n\nWhen the 3-minute is up, the cross will disappear to indicate the completion.\n\n\nPress the spacebar to begin',
         font='Arial',
-        units='norm', pos=(0, 0), draggable=False, height=0.1, wrapWidth=1.8, ori=0.0, 
+        units='norm', pos=(0, 0), height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -623,7 +617,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     text_eo = visual.TextStim(win=win, name='text_eo',
         text='+',
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.1, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -632,7 +626,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     text_thank_you = visual.TextStim(win=win, name='text_thank_you',
         text='Thank you. You have completed this task!',
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -761,14 +755,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             read_welcome.status = STARTED
             read_welcome.play(when=win)  # sync with win flip
         
-        # if read_welcome is active this frame...
-        if read_welcome.status == STARTED:
-            # update params
-            pass
-            # if sound is finished but read_welcome has time left, finish it now
-            if read_welcome.isFinished:
-                read_welcome.status = FINISHED
-        
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
             thisExp.status = FINISHED
@@ -802,6 +788,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         thisExp.addData('key_welcome.rt', key_welcome.rt)
         thisExp.addData('key_welcome.duration', key_welcome.duration)
     read_welcome.pause()  # ensure sound has stopped at end of Routine
+    read_welcome.status = PAUSED
     thisExp.nextEntry()
     # the Routine "_welcome" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
@@ -894,14 +881,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             read_et.status = STARTED
             read_et.play(when=win)  # sync with win flip
         
-        # if read_et is active this frame...
-        if read_et.status == STARTED:
-            # update params
-            pass
-            # if sound is finished but read_et has time left, finish it now
-            if read_et.isFinished:
-                read_et.status = FINISHED
-        
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
             thisExp.status = FINISHED
@@ -935,6 +914,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         thisExp.addData('key_et.rt', key_et.rt)
         thisExp.addData('key_et.duration', key_et.duration)
     read_et.pause()  # ensure sound has stopped at end of Routine
+    read_et.status = PAUSED
     thisExp.nextEntry()
     # the Routine "_et_instruct" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
@@ -1130,15 +1110,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 read_start.frameNStop = frameN  # exact frame index
                 # update status
                 read_start.status = FINISHED
-                read_start.stop()
+                read_start._EOS()
         
-        # if read_start is active this frame...
-        if read_start.status == STARTED:
-            # update params
-            pass
-            # if sound is finished but read_start has time left, finish it now
-            if read_start.isFinished:
-                read_start.status = FINISHED
         # *etRecord* updates
         
         # if etRecord is starting this frame...
@@ -1148,6 +1121,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             etRecord.tStart = t  # local t and not account for scr refresh
             etRecord.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(etRecord, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.addData('etRecord.started', t)
             # update status
             etRecord.status = STARTED
             etRecord.start()
@@ -1183,9 +1158,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     read_start.pause()  # ensure sound has stopped at end of Routine
-    # make sure the eyetracker recording stops
-    if etRecord.status != FINISHED:
-        etRecord.status = FINISHED
+    read_start.status = PAUSED
     thisExp.nextEntry()
     # the Routine "__start__" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
@@ -1278,14 +1251,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             read_instruct.status = STARTED
             read_instruct.play(when=win)  # sync with win flip
         
-        # if read_instruct is active this frame...
-        if read_instruct.status == STARTED:
-            # update params
-            pass
-            # if sound is finished but read_instruct has time left, finish it now
-            if read_instruct.isFinished:
-                read_instruct.status = FINISHED
-        
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
             thisExp.status = FINISHED
@@ -1319,6 +1284,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         thisExp.addData('key_instruct.rt', key_instruct.rt)
         thisExp.addData('key_instruct.duration', key_instruct.duration)
     read_instruct.pause()  # ensure sound has stopped at end of Routine
+    read_instruct.status = PAUSED
     thisExp.nextEntry()
     # the Routine "instruct_ec" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
@@ -1416,15 +1382,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 thisExp.timestampOnFlip(win, 'tone_finish.stopped')
                 # update status
                 tone_finish.status = FINISHED
-                tone_finish.stop()
-        
-        # if tone_finish is active this frame...
-        if tone_finish.status == STARTED:
-            # update params
-            pass
-            # if sound is finished but tone_finish has time left, finish it now
-            if tone_finish.isFinished:
-                tone_finish.status = FINISHED
+                tone_finish._EOS()
         # Run 'Each Frame' code from trigger_ec
         if text_ec.status == STARTED and not stimulus_pulse_started:
             win.callOnFlip(dev.activate_line, bitmask=block_start_code)
@@ -1464,6 +1422,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             thisComponent.setAutoDraw(False)
     thisExp.addData('eyes_closed.stopped', globalClock.getTime(format='float'))
     tone_finish.pause()  # ensure sound has stopped at end of Routine
+    tone_finish.status = PAUSED
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -1559,14 +1518,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             read_instruct_2.status = STARTED
             read_instruct_2.play(when=win)  # sync with win flip
         
-        # if read_instruct_2 is active this frame...
-        if read_instruct_2.status == STARTED:
-            # update params
-            pass
-            # if sound is finished but read_instruct_2 has time left, finish it now
-            if read_instruct_2.isFinished:
-                read_instruct_2.status = FINISHED
-        
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
             thisExp.status = FINISHED
@@ -1600,6 +1551,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         thisExp.addData('key_instruct_2.rt', key_instruct_2.rt)
         thisExp.addData('key_instruct_2.duration', key_instruct_2.duration)
     read_instruct_2.pause()  # ensure sound has stopped at end of Routine
+    read_instruct_2.status = PAUSED
     thisExp.nextEntry()
     # the Routine "instruct_eo" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
@@ -1794,15 +1746,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 read_thank_you.frameNStop = frameN  # exact frame index
                 # update status
                 read_thank_you.status = FINISHED
-                read_thank_you.stop()
-        
-        # if read_thank_you is active this frame...
-        if read_thank_you.status == STARTED:
-            # update params
-            pass
-            # if sound is finished but read_thank_you has time left, finish it now
-            if read_thank_you.isFinished:
-                read_thank_you.status = FINISHED
+                read_thank_you._EOS()
         
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -1830,6 +1774,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     read_thank_you.pause()  # ensure sound has stopped at end of Routine
+    read_thank_you.status = PAUSED
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -1881,13 +1826,8 @@ def endExperiment(thisExp, win=None):
         # Flip one final time so any remaining win.callOnFlip() 
         # and win.timeOnFlip() tasks get executed
         win.flip()
-    # return console logger level to WARNING
-    logging.console.setLevel(logging.WARNING)
     # mark experiment handler as finished
     thisExp.status = FINISHED
-    # shut down eyetracker, if there is one
-    if deviceManager.getDevice('eyetracker') is not None:
-        deviceManager.removeDevice('eyetracker')
     logging.flush()
 
 
@@ -1909,9 +1849,6 @@ def quit(thisExp, win=None, thisSession=None):
         # and win.timeOnFlip() tasks get executed before quitting
         win.flip()
         win.close()
-    # shut down eyetracker, if there is one
-    if deviceManager.getDevice('eyetracker') is not None:
-        deviceManager.removeDevice('eyetracker')
     logging.flush()
     if thisSession is not None:
         thisSession.stop()
