@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on Thu Jun 20 22:00:45 2024
+    on Fri Jun 21 08:12:23 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -95,7 +95,7 @@ or run the experiment with `--pilot` as an argument. To change what pilot
 PILOTING = core.setPilotModeFromArgs()
 # start off with values from experiment settings
 _fullScr = True
-_winSize = [2560, 1440]
+_winSize = [1728, 1117]
 _loggingLevel = logging.getLevel('warning')
 # if in pilot mode, apply overrides according to preferences
 if PILOTING:
@@ -267,24 +267,12 @@ def setupDevices(expInfo, thisExp, win):
     ioConfig = {}
     
     # Setup eyetracking
-    ioConfig['eyetracker.hw.sr_research.eyelink.EyeTracker'] = {
+    ioConfig['eyetracker.hw.mouse.EyeTracker'] = {
         'name': 'tracker',
-        'model_name': 'EYELINK 1000 DESKTOP',
-        'simulation_mode': False,
-        'network_settings': '100.1.1.1',
-        'default_native_data_file_name': 'EXPFILE',
-        'runtime_settings': {
-            'sampling_rate': 1000.0,
-            'track_eyes': 'LEFT_EYE',
-            'sample_filtering': {
-                'FILTER_FILE': 'FILTER_LEVEL_OFF',
-                'FILTER_ONLINE': 'FILTER_LEVEL_OFF',
-            },
-            'vog_settings': {
-                'pupil_measure_types': 'PUPIL_DIAMETER',
-                'tracking_mode': 'PUPIL_CR_TRACKING',
-                'pupil_center_algorithm': 'ELLIPSE_FIT',
-            }
+        'controls': {
+            'move': [],
+            'blink':('LEFT_BUTTON',),
+            'saccade_threshold': 0.5,
         }
     }
     
