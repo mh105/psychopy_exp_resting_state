@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on Thu Jun 20 21:02:08 2024
+    on Thu Jun 20 22:00:45 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -622,7 +622,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         languageStyle='LTR',
         depth=0.0);
     
-    # --- Initialize components for Routine "_thank_you" ---
+    # --- Initialize components for Routine "__end__" ---
     text_thank_you = visual.TextStim(win=win, name='text_thank_you',
         text='Thank you. You have completed this task!',
         font='Arial',
@@ -1638,15 +1638,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         routineTimer.addTime(-180.000000)
     thisExp.nextEntry()
     
-    # --- Prepare to start Routine "_thank_you" ---
+    # --- Prepare to start Routine "__end__" ---
     continueRoutine = True
     # update component parameters for each repeat
     read_thank_you.setSound('resource/thank_you.wav', secs=2.7, hamming=True)
     read_thank_you.setVolume(1.0, log=False)
     read_thank_you.seek(0)
     # keep track of which components have finished
-    _thank_youComponents = [text_thank_you, read_thank_you]
-    for thisComponent in _thank_youComponents:
+    __end__Components = [text_thank_you, read_thank_you]
+    for thisComponent in __end__Components:
         thisComponent.tStart = None
         thisComponent.tStop = None
         thisComponent.tStartRefresh = None
@@ -1658,7 +1658,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
     frameN = -1
     
-    # --- Run Routine "_thank_you" ---
+    # --- Run Routine "__end__" ---
     routineForceEnded = not continueRoutine
     while continueRoutine and routineTimer.getTime() < 3.0:
         # get current time
@@ -1732,7 +1732,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             routineForceEnded = True
             break
         continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in _thank_youComponents:
+        for thisComponent in __end__Components:
             if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                 continueRoutine = True
                 break  # at least one component has not yet finished
@@ -1741,8 +1741,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
             win.flip()
     
-    # --- Ending Routine "_thank_you" ---
-    for thisComponent in _thank_youComponents:
+    # --- Ending Routine "__end__" ---
+    for thisComponent in __end__Components:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     read_thank_you.pause()  # ensure sound has stopped at end of Routine
