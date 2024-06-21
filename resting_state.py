@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on Wed Jun 19 09:46:20 2024
+    on Thu Jun 20 21:02:08 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -626,7 +626,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     text_thank_you = visual.TextStim(win=win, name='text_thank_you',
         text='Thank you. You have completed this task!',
         font='Arial',
-        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+        units='norm', pos=(0, 0), height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -739,9 +739,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             theseKeys = key_welcome.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
             _key_welcome_allKeys.extend(theseKeys)
             if len(_key_welcome_allKeys):
-                key_welcome.keys = _key_welcome_allKeys[0].name  # just the first key pressed
-                key_welcome.rt = _key_welcome_allKeys[0].rt
-                key_welcome.duration = _key_welcome_allKeys[0].duration
+                key_welcome.keys = _key_welcome_allKeys[-1].name  # just the last key pressed
+                key_welcome.rt = _key_welcome_allKeys[-1].rt
+                key_welcome.duration = _key_welcome_allKeys[-1].duration
                 # a response ends the routine
                 continueRoutine = False
         
@@ -780,13 +780,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     for thisComponent in _welcomeComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # check responses
-    if key_welcome.keys in ['', [], None]:  # No response was made
-        key_welcome.keys = None
-    thisExp.addData('key_welcome.keys',key_welcome.keys)
-    if key_welcome.keys != None:  # we had a response
-        thisExp.addData('key_welcome.rt', key_welcome.rt)
-        thisExp.addData('key_welcome.duration', key_welcome.duration)
     read_welcome.pause()  # ensure sound has stopped at end of Routine
     read_welcome.status = PAUSED
     thisExp.nextEntry()
@@ -865,9 +858,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             theseKeys = key_et.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
             _key_et_allKeys.extend(theseKeys)
             if len(_key_et_allKeys):
-                key_et.keys = _key_et_allKeys[0].name  # just the first key pressed
-                key_et.rt = _key_et_allKeys[0].rt
-                key_et.duration = _key_et_allKeys[0].duration
+                key_et.keys = _key_et_allKeys[-1].name  # just the last key pressed
+                key_et.rt = _key_et_allKeys[-1].rt
+                key_et.duration = _key_et_allKeys[-1].duration
                 # a response ends the routine
                 continueRoutine = False
         
@@ -906,13 +899,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     for thisComponent in _et_instructComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # check responses
-    if key_et.keys in ['', [], None]:  # No response was made
-        key_et.keys = None
-    thisExp.addData('key_et.keys',key_et.keys)
-    if key_et.keys != None:  # we had a response
-        thisExp.addData('key_et.rt', key_et.rt)
-        thisExp.addData('key_et.duration', key_et.duration)
     read_et.pause()  # ensure sound has stopped at end of Routine
     read_et.status = PAUSED
     thisExp.nextEntry()
@@ -1235,9 +1221,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             theseKeys = key_instruct.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
             _key_instruct_allKeys.extend(theseKeys)
             if len(_key_instruct_allKeys):
-                key_instruct.keys = _key_instruct_allKeys[0].name  # just the first key pressed
-                key_instruct.rt = _key_instruct_allKeys[0].rt
-                key_instruct.duration = _key_instruct_allKeys[0].duration
+                key_instruct.keys = _key_instruct_allKeys[-1].name  # just the last key pressed
+                key_instruct.rt = _key_instruct_allKeys[-1].rt
+                key_instruct.duration = _key_instruct_allKeys[-1].duration
                 # a response ends the routine
                 continueRoutine = False
         
@@ -1276,13 +1262,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     for thisComponent in instruct_ecComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # check responses
-    if key_instruct.keys in ['', [], None]:  # No response was made
-        key_instruct.keys = None
-    thisExp.addData('key_instruct.keys',key_instruct.keys)
-    if key_instruct.keys != None:  # we had a response
-        thisExp.addData('key_instruct.rt', key_instruct.rt)
-        thisExp.addData('key_instruct.duration', key_instruct.duration)
     read_instruct.pause()  # ensure sound has stopped at end of Routine
     read_instruct.status = PAUSED
     thisExp.nextEntry()
@@ -1502,9 +1481,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             theseKeys = key_instruct_2.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
             _key_instruct_2_allKeys.extend(theseKeys)
             if len(_key_instruct_2_allKeys):
-                key_instruct_2.keys = _key_instruct_2_allKeys[0].name  # just the first key pressed
-                key_instruct_2.rt = _key_instruct_2_allKeys[0].rt
-                key_instruct_2.duration = _key_instruct_2_allKeys[0].duration
+                key_instruct_2.keys = _key_instruct_2_allKeys[-1].name  # just the last key pressed
+                key_instruct_2.rt = _key_instruct_2_allKeys[-1].rt
+                key_instruct_2.duration = _key_instruct_2_allKeys[-1].duration
                 # a response ends the routine
                 continueRoutine = False
         
@@ -1543,13 +1522,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     for thisComponent in instruct_eoComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # check responses
-    if key_instruct_2.keys in ['', [], None]:  # No response was made
-        key_instruct_2.keys = None
-    thisExp.addData('key_instruct_2.keys',key_instruct_2.keys)
-    if key_instruct_2.keys != None:  # we had a response
-        thisExp.addData('key_instruct_2.rt', key_instruct_2.rt)
-        thisExp.addData('key_instruct_2.duration', key_instruct_2.duration)
     read_instruct_2.pause()  # ensure sound has stopped at end of Routine
     read_instruct_2.status = PAUSED
     thisExp.nextEntry()
