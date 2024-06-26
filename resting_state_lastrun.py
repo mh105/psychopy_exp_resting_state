@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on Sun Jun 16 09:43:17 2024
+    on Tue Jun 25 20:13:45 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -156,7 +156,7 @@ def setupData(expInfo, dataDir=None):
     # data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
     if dataDir is None:
         dataDir = _thisDir
-    filename = u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])
+    filename = u'data/%s/%s_%s_%s' % (expInfo['participant'], expInfo['participant'], expName, expInfo['session'])
     # make sure filename is relative to dataDir
     if os.path.isabs(filename):
         dataDir = os.path.commonprefix([dataDir, filename])
@@ -610,11 +610,11 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         languageStyle='LTR',
         depth=0.0);
     
-    # --- Initialize components for Routine "_thank_you" ---
+    # --- Initialize components for Routine "__end__" ---
     text_thank_you = visual.TextStim(win=win, name='text_thank_you',
         text='Thank you. You have completed this task!',
         font='Arial',
-        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+        units='norm', pos=(0, 0), height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -727,9 +727,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             theseKeys = key_welcome.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
             _key_welcome_allKeys.extend(theseKeys)
             if len(_key_welcome_allKeys):
-                key_welcome.keys = _key_welcome_allKeys[0].name  # just the first key pressed
-                key_welcome.rt = _key_welcome_allKeys[0].rt
-                key_welcome.duration = _key_welcome_allKeys[0].duration
+                key_welcome.keys = _key_welcome_allKeys[-1].name  # just the last key pressed
+                key_welcome.rt = _key_welcome_allKeys[-1].rt
+                key_welcome.duration = _key_welcome_allKeys[-1].duration
                 # a response ends the routine
                 continueRoutine = False
         
@@ -768,13 +768,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     for thisComponent in _welcomeComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # check responses
-    if key_welcome.keys in ['', [], None]:  # No response was made
-        key_welcome.keys = None
-    thisExp.addData('key_welcome.keys',key_welcome.keys)
-    if key_welcome.keys != None:  # we had a response
-        thisExp.addData('key_welcome.rt', key_welcome.rt)
-        thisExp.addData('key_welcome.duration', key_welcome.duration)
     read_welcome.pause()  # ensure sound has stopped at end of Routine
     read_welcome.status = PAUSED
     thisExp.nextEntry()
@@ -853,9 +846,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             theseKeys = key_et.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
             _key_et_allKeys.extend(theseKeys)
             if len(_key_et_allKeys):
-                key_et.keys = _key_et_allKeys[0].name  # just the first key pressed
-                key_et.rt = _key_et_allKeys[0].rt
-                key_et.duration = _key_et_allKeys[0].duration
+                key_et.keys = _key_et_allKeys[-1].name  # just the last key pressed
+                key_et.rt = _key_et_allKeys[-1].rt
+                key_et.duration = _key_et_allKeys[-1].duration
                 # a response ends the routine
                 continueRoutine = False
         
@@ -894,13 +887,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     for thisComponent in _et_instructComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # check responses
-    if key_et.keys in ['', [], None]:  # No response was made
-        key_et.keys = None
-    thisExp.addData('key_et.keys',key_et.keys)
-    if key_et.keys != None:  # we had a response
-        thisExp.addData('key_et.rt', key_et.rt)
-        thisExp.addData('key_et.duration', key_et.duration)
     read_et.pause()  # ensure sound has stopped at end of Routine
     read_et.status = PAUSED
     thisExp.nextEntry()
@@ -1040,7 +1026,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Run Routine "__start__" ---
     routineForceEnded = not continueRoutine
-    while continueRoutine:
+    while continueRoutine and routineTimer.getTime() < 2.0:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -1079,14 +1065,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 text_start.setAutoDraw(False)
         
         # if read_start is starting this frame...
-        if read_start.status == NOT_STARTED and tThisFlip >= 0.2-frameTolerance:
+        if read_start.status == NOT_STARTED and t >= 0.2-frameTolerance:
             # keep track of start time/frame for later
             read_start.frameNStart = frameN  # exact frame index
             read_start.tStart = t  # local t and not account for scr refresh
             read_start.tStartRefresh = tThisFlipGlobal  # on global time
             # update status
             read_start.status = STARTED
-            read_start.play(when=win)  # sync with win flip
+            read_start.play()  # start the sound (it finishes automatically)
         
         # if read_start is stopping this frame...
         if read_start.status == STARTED:
@@ -1109,6 +1095,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             etRecord.tStart = t  # local t and not account for scr refresh
             etRecord.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(etRecord, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.addData('etRecord.started', t)
             # update status
             etRecord.status = STARTED
             etRecord.start()
@@ -1145,9 +1133,12 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             thisComponent.setAutoDraw(False)
     read_start.pause()  # ensure sound has stopped at end of Routine
     read_start.status = PAUSED
+    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
+    if routineForceEnded:
+        routineTimer.reset()
+    else:
+        routineTimer.addTime(-2.000000)
     thisExp.nextEntry()
-    # the Routine "__start__" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
     
     # --- Prepare to start Routine "instruct_ec" ---
     continueRoutine = True
@@ -1221,9 +1212,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             theseKeys = key_instruct.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
             _key_instruct_allKeys.extend(theseKeys)
             if len(_key_instruct_allKeys):
-                key_instruct.keys = _key_instruct_allKeys[0].name  # just the first key pressed
-                key_instruct.rt = _key_instruct_allKeys[0].rt
-                key_instruct.duration = _key_instruct_allKeys[0].duration
+                key_instruct.keys = _key_instruct_allKeys[-1].name  # just the last key pressed
+                key_instruct.rt = _key_instruct_allKeys[-1].rt
+                key_instruct.duration = _key_instruct_allKeys[-1].duration
                 # a response ends the routine
                 continueRoutine = False
         
@@ -1262,13 +1253,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     for thisComponent in instruct_ecComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # check responses
-    if key_instruct.keys in ['', [], None]:  # No response was made
-        key_instruct.keys = None
-    thisExp.addData('key_instruct.keys',key_instruct.keys)
-    if key_instruct.keys != None:  # we had a response
-        thisExp.addData('key_instruct.rt', key_instruct.rt)
-        thisExp.addData('key_instruct.duration', key_instruct.duration)
     read_instruct.pause()  # ensure sound has stopped at end of Routine
     read_instruct.status = PAUSED
     thisExp.nextEntry()
@@ -1345,16 +1329,16 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 text_ec.setAutoDraw(False)
         
         # if tone_finish is starting this frame...
-        if tone_finish.status == NOT_STARTED and tThisFlip >= 180.0-frameTolerance:
+        if tone_finish.status == NOT_STARTED and t >= 180.0-frameTolerance:
             # keep track of start time/frame for later
             tone_finish.frameNStart = frameN  # exact frame index
             tone_finish.tStart = t  # local t and not account for scr refresh
             tone_finish.tStartRefresh = tThisFlipGlobal  # on global time
             # add timestamp to datafile
-            thisExp.addData('tone_finish.started', tThisFlipGlobal)
+            thisExp.addData('tone_finish.started', t)
             # update status
             tone_finish.status = STARTED
-            tone_finish.play(when=win)  # sync with win flip
+            tone_finish.play()  # start the sound (it finishes automatically)
         
         # if tone_finish is stopping this frame...
         if tone_finish.status == STARTED:
@@ -1365,7 +1349,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 tone_finish.tStopRefresh = tThisFlipGlobal  # on global time
                 tone_finish.frameNStop = frameN  # exact frame index
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'tone_finish.stopped')
+                thisExp.addData('tone_finish.stopped', t)
                 # update status
                 tone_finish.status = FINISHED
                 tone_finish._EOS()
@@ -1407,8 +1391,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('eyes_closed.stopped', globalClock.getTime(format='float'))
-    tone_finish.pause()  # ensure sound has stopped at end of Routine
-    tone_finish.status = PAUSED
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -1488,9 +1470,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             theseKeys = key_instruct_2.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
             _key_instruct_2_allKeys.extend(theseKeys)
             if len(_key_instruct_2_allKeys):
-                key_instruct_2.keys = _key_instruct_2_allKeys[0].name  # just the first key pressed
-                key_instruct_2.rt = _key_instruct_2_allKeys[0].rt
-                key_instruct_2.duration = _key_instruct_2_allKeys[0].duration
+                key_instruct_2.keys = _key_instruct_2_allKeys[-1].name  # just the last key pressed
+                key_instruct_2.rt = _key_instruct_2_allKeys[-1].rt
+                key_instruct_2.duration = _key_instruct_2_allKeys[-1].duration
                 # a response ends the routine
                 continueRoutine = False
         
@@ -1529,13 +1511,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     for thisComponent in instruct_eoComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # check responses
-    if key_instruct_2.keys in ['', [], None]:  # No response was made
-        key_instruct_2.keys = None
-    thisExp.addData('key_instruct_2.keys',key_instruct_2.keys)
-    if key_instruct_2.keys != None:  # we had a response
-        thisExp.addData('key_instruct_2.rt', key_instruct_2.rt)
-        thisExp.addData('key_instruct_2.duration', key_instruct_2.duration)
     read_instruct_2.pause()  # ensure sound has stopped at end of Routine
     read_instruct_2.status = PAUSED
     thisExp.nextEntry()
@@ -1652,15 +1627,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         routineTimer.addTime(-180.000000)
     thisExp.nextEntry()
     
-    # --- Prepare to start Routine "_thank_you" ---
+    # --- Prepare to start Routine "__end__" ---
     continueRoutine = True
     # update component parameters for each repeat
     read_thank_you.setSound('resource/thank_you.wav', secs=2.7, hamming=True)
     read_thank_you.setVolume(1.0, log=False)
     read_thank_you.seek(0)
     # keep track of which components have finished
-    _thank_youComponents = [text_thank_you, read_thank_you]
-    for thisComponent in _thank_youComponents:
+    __end__Components = [text_thank_you, read_thank_you]
+    for thisComponent in __end__Components:
         thisComponent.tStart = None
         thisComponent.tStop = None
         thisComponent.tStartRefresh = None
@@ -1672,7 +1647,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
     frameN = -1
     
-    # --- Run Routine "_thank_you" ---
+    # --- Run Routine "__end__" ---
     routineForceEnded = not continueRoutine
     while continueRoutine and routineTimer.getTime() < 3.0:
         # get current time
@@ -1713,14 +1688,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 text_thank_you.setAutoDraw(False)
         
         # if read_thank_you is starting this frame...
-        if read_thank_you.status == NOT_STARTED and tThisFlip >= 0.2-frameTolerance:
+        if read_thank_you.status == NOT_STARTED and t >= 0.2-frameTolerance:
             # keep track of start time/frame for later
             read_thank_you.frameNStart = frameN  # exact frame index
             read_thank_you.tStart = t  # local t and not account for scr refresh
             read_thank_you.tStartRefresh = tThisFlipGlobal  # on global time
             # update status
             read_thank_you.status = STARTED
-            read_thank_you.play(when=win)  # sync with win flip
+            read_thank_you.play()  # start the sound (it finishes automatically)
         
         # if read_thank_you is stopping this frame...
         if read_thank_you.status == STARTED:
@@ -1746,7 +1721,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             routineForceEnded = True
             break
         continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in _thank_youComponents:
+        for thisComponent in __end__Components:
             if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                 continueRoutine = True
                 break  # at least one component has not yet finished
@@ -1755,8 +1730,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
             win.flip()
     
-    # --- Ending Routine "_thank_you" ---
-    for thisComponent in _thank_youComponents:
+    # --- Ending Routine "__end__" ---
+    for thisComponent in __end__Components:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     read_thank_you.pause()  # ensure sound has stopped at end of Routine

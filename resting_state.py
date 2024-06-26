@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on Fri Jun 21 08:12:23 2024
+    on Tue Jun 25 20:13:39 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -95,7 +95,7 @@ or run the experiment with `--pilot` as an argument. To change what pilot
 PILOTING = core.setPilotModeFromArgs()
 # start off with values from experiment settings
 _fullScr = True
-_winSize = [1728, 1117]
+_winSize = [2560, 1440]
 _loggingLevel = logging.getLevel('warning')
 # if in pilot mode, apply overrides according to preferences
 if PILOTING:
@@ -1026,7 +1026,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Run Routine "__start__" ---
     routineForceEnded = not continueRoutine
-    while continueRoutine:
+    while continueRoutine and routineTimer.getTime() < 2.0:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -1065,14 +1065,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 text_start.setAutoDraw(False)
         
         # if read_start is starting this frame...
-        if read_start.status == NOT_STARTED and tThisFlip >= 0.2-frameTolerance:
+        if read_start.status == NOT_STARTED and t >= 0.2-frameTolerance:
             # keep track of start time/frame for later
             read_start.frameNStart = frameN  # exact frame index
             read_start.tStart = t  # local t and not account for scr refresh
             read_start.tStartRefresh = tThisFlipGlobal  # on global time
             # update status
             read_start.status = STARTED
-            read_start.play(when=win)  # sync with win flip
+            read_start.play()  # start the sound (it finishes automatically)
         
         # if read_start is stopping this frame...
         if read_start.status == STARTED:
@@ -1133,9 +1133,12 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             thisComponent.setAutoDraw(False)
     read_start.pause()  # ensure sound has stopped at end of Routine
     read_start.status = PAUSED
+    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
+    if routineForceEnded:
+        routineTimer.reset()
+    else:
+        routineTimer.addTime(-2.000000)
     thisExp.nextEntry()
-    # the Routine "__start__" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
     
     # --- Prepare to start Routine "instruct_ec" ---
     continueRoutine = True
@@ -1326,16 +1329,16 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 text_ec.setAutoDraw(False)
         
         # if tone_finish is starting this frame...
-        if tone_finish.status == NOT_STARTED and tThisFlip >= 180.0-frameTolerance:
+        if tone_finish.status == NOT_STARTED and t >= 180.0-frameTolerance:
             # keep track of start time/frame for later
             tone_finish.frameNStart = frameN  # exact frame index
             tone_finish.tStart = t  # local t and not account for scr refresh
             tone_finish.tStartRefresh = tThisFlipGlobal  # on global time
             # add timestamp to datafile
-            thisExp.addData('tone_finish.started', tThisFlipGlobal)
+            thisExp.addData('tone_finish.started', t)
             # update status
             tone_finish.status = STARTED
-            tone_finish.play(when=win)  # sync with win flip
+            tone_finish.play()  # start the sound (it finishes automatically)
         
         # if tone_finish is stopping this frame...
         if tone_finish.status == STARTED:
@@ -1346,7 +1349,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 tone_finish.tStopRefresh = tThisFlipGlobal  # on global time
                 tone_finish.frameNStop = frameN  # exact frame index
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'tone_finish.stopped')
+                thisExp.addData('tone_finish.stopped', t)
                 # update status
                 tone_finish.status = FINISHED
                 tone_finish._EOS()
@@ -1388,8 +1391,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('eyes_closed.stopped', globalClock.getTime(format='float'))
-    tone_finish.pause()  # ensure sound has stopped at end of Routine
-    tone_finish.status = PAUSED
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -1687,14 +1688,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 text_thank_you.setAutoDraw(False)
         
         # if read_thank_you is starting this frame...
-        if read_thank_you.status == NOT_STARTED and tThisFlip >= 0.2-frameTolerance:
+        if read_thank_you.status == NOT_STARTED and t >= 0.2-frameTolerance:
             # keep track of start time/frame for later
             read_thank_you.frameNStart = frameN  # exact frame index
             read_thank_you.tStart = t  # local t and not account for scr refresh
             read_thank_you.tStartRefresh = tThisFlipGlobal  # on global time
             # update status
             read_thank_you.status = STARTED
-            read_thank_you.play(when=win)  # sync with win flip
+            read_thank_you.play()  # start the sound (it finishes automatically)
         
         # if read_thank_you is stopping this frame...
         if read_thank_you.status == STARTED:
