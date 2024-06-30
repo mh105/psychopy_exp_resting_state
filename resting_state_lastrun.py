@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on Tue Jun 25 20:13:45 2024
+    on Sun Jun 30 16:21:56 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -95,7 +95,7 @@ or run the experiment with `--pilot` as an argument. To change what pilot
 PILOTING = core.setPilotModeFromArgs()
 # start off with values from experiment settings
 _fullScr = True
-_winSize = [2560, 1440]
+_winSize = [1728, 1117]
 _loggingLevel = logging.getLevel('warning')
 # if in pilot mode, apply overrides according to preferences
 if PILOTING:
@@ -537,6 +537,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     ##TASK SPECIFIC TRIGGER VALUES##
     # N.B.: only use values 1-99 and provide clear comments on used values
+    eyes_closed_start_code = 2
+    eyes_closed_end_code = 3
+    eyes_open_start_code = 4
+    eyes_open_end_code = 5
     
     # Run 'Begin Experiment' code from task_id
     dev.activate_line(bitmask=task_start_code)  # special code for task start
@@ -1355,13 +1359,13 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 tone_finish._EOS()
         # Run 'Each Frame' code from trigger_ec
         if text_ec.status == STARTED and not stimulus_pulse_started:
-            win.callOnFlip(dev.activate_line, bitmask=block_start_code)
-            win.callOnFlip(eyetracker.sendMessage, block_start_code)
+            win.callOnFlip(dev.activate_line, bitmask=eyes_closed_start_code)
+            win.callOnFlip(eyetracker.sendMessage, eyes_closed_start_code)
             stimulus_pulse_started = True
         
         if text_ec.status == FINISHED and not stimulus_pulse_started_2:
-            dev.activate_line(bitmask=block_end_code)
-            eyetracker.sendMessage(block_end_code)
+            dev.activate_line(bitmask=eyes_closed_end_code)
+            eyetracker.sendMessage(eyes_closed_end_code)
             stimulus_pulse_started_2 = True
         
         
@@ -1584,13 +1588,13 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 text_eo.setAutoDraw(False)
         # Run 'Each Frame' code from trigger_eo
         if text_eo.status == STARTED and not stimulus_pulse_started:
-            win.callOnFlip(dev.activate_line, bitmask=block_start_code)
-            win.callOnFlip(eyetracker.sendMessage, block_start_code)
+            win.callOnFlip(dev.activate_line, bitmask=eyes_open_start_code)
+            win.callOnFlip(eyetracker.sendMessage, eyes_open_start_code)
             stimulus_pulse_started = True
         
         if text_eo.status == FINISHED and not stimulus_pulse_started_2:
-            dev.activate_line(bitmask=block_end_code)
-            eyetracker.sendMessage(block_end_code)
+            dev.activate_line(bitmask=eyes_open_end_code)
+            eyetracker.sendMessage(eyes_open_end_code)
             stimulus_pulse_started_2 = True
         
         
