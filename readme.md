@@ -1,7 +1,8 @@
 # Resting state task
-Last edit: 07/09/2024
+Last edit: 07/23/2024
 
 ## Edit history
+- 07/23/2024 by Alex He - upgraded to support PsychoPy 2024.2.0
 - 07/09/2024 by Alex He - created finalized first draft version
 
 ## Description
