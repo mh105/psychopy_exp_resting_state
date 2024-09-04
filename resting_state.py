@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.1a1),
-    on Fri Aug 16 19:37:10 2024
+    on Wed Sep  4 15:13:58 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -35,8 +35,38 @@ from psychopy.hardware import keyboard
 
 # Run 'Before Experiment' code from eeg
 import pyxid2
-print("Getting a list of all attached XID devices...")
-devices = pyxid2.get_xid_devices()
+import multiprocessing
+
+
+def _get_xid_devices(queue):
+    devices = pyxid2.get_xid_devices()
+    result = queue.get()
+    result['devices'] = devices
+    queue.put(result)
+
+
+def get_xid_devices():
+    print("Getting a list of all attached XID devices...")
+    attempt_count = 0
+    while attempt_count >= 0:
+        attempt_count += 1
+        print('     Attempt:', attempt_count)
+        queue = multiprocessing.Queue()
+        queue.put({'devices': False})
+        p = multiprocessing.Process(target=_get_xid_devices, args=(queue,))
+        p.start()
+        p.join(0.5)  # wait 0.5s for pyxid2.get_xid_devices() to return
+        attempt_count *= -1
+        if p.is_alive():
+            p.terminate()
+            p.join()
+            attempt_count *= -1
+    devices = queue.get()['devices']
+    assert devices is not False, "_get_xid_devices() failed to update devices."
+    return devices
+
+
+devices = get_xid_devices()
 
 if devices:
     dev = devices[0]
