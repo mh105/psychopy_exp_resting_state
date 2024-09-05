@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.1a1),
-    on Wed Sep  4 15:13:58 2024
+    on Thu Sep  5 11:17:59 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -35,14 +35,31 @@ from psychopy.hardware import keyboard
 
 # Run 'Before Experiment' code from eeg
 import pyxid2
-import multiprocessing
+import threading
+import _thread
 
 
-def _get_xid_devices(queue):
-    devices = pyxid2.get_xid_devices()
-    result = queue.get()
-    result['devices'] = devices
-    queue.put(result)
+def exit_after(s):
+    '''
+    function decorator to raise KeyboardInterrupt exception
+    if function takes longer than s seconds
+    '''
+    def outer(fn):
+        def inner(*args, **kwargs):
+            timer = threading.Timer(s, _thread.interrupt_main)
+            timer.start()
+            try:
+                result = fn(*args, **kwargs)
+            finally:
+                timer.cancel()
+            return result
+        return inner
+    return outer
+
+
+@exit_after(0.5)  # exit if function takes longer than 0.5 seconds
+def _get_xid_devices():
+    return pyxid2.get_xid_devices()
 
 
 def get_xid_devices():
@@ -51,18 +68,11 @@ def get_xid_devices():
     while attempt_count >= 0:
         attempt_count += 1
         print('     Attempt:', attempt_count)
-        queue = multiprocessing.Queue()
-        queue.put({'devices': False})
-        p = multiprocessing.Process(target=_get_xid_devices, args=(queue,))
-        p.start()
-        p.join(0.5)  # wait 0.5s for pyxid2.get_xid_devices() to return
         attempt_count *= -1
-        if p.is_alive():
-            p.terminate()
-            p.join()
+        try:
+            devices = _get_xid_devices()
+        except KeyboardInterrupt:
             attempt_count *= -1
-    devices = queue.get()['devices']
-    assert devices is not False, "_get_xid_devices() failed to update devices."
     return devices
 
 
@@ -89,7 +99,6 @@ if devices:
         core.wait(0.5)  # wait 500ms between two consecutive triggers
     dev.con.set_digio_lines_to_mask(0)  # XidDevice.clear_all_lines()
     print("EEG system is now ready for the experiment to start.")
-    print("")
 
 else:
     # Dummy XidDevice for code components to run without C-POD connected
