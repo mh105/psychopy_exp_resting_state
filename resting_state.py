@@ -1,8 +1,8 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy3 Experiment Builder (v2024.2.1a1),
-    on Tue Sep 17 17:07:30 2024
+This experiment was created using PsychoPy3 Experiment Builder (v2024.2.2a1),
+    on Mon Sep 23 11:37:43 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -119,7 +119,7 @@ deviceManager = hardware.DeviceManager()
 # ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 # store info about the experiment session
-psychopyVersion = '2024.2.1a1'
+psychopyVersion = '2024.2.2a1'
 expName = 'resting_state'  # from the Builder filename that created this script
 # information about this experiment
 expInfo = {
