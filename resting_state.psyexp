@@ -555,7 +555,7 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.2" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="1.6" valType="code" updates="constant" name="stopVal"/>
+        <Param val="1.8" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="constant" name="stopWithRoutine"/>
         <Param val="False" valType="bool" updates="constant" name="syncScreenRefresh"/>
         <Param val="1" valType="num" updates="constant" name="volume"/>

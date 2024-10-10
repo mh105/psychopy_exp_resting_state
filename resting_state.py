@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.2a1),
-    on Thu Oct 10 12:54:56 2024
+    on Thu Oct 10 14:20:17 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -580,7 +580,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         depth=0.0);
     read_start = sound.Sound(
         'A', 
-        secs=1.6, 
+        secs=1.8, 
         stereo=True, 
         hamming=True, 
         speaker='read_start',    name='read_start'
@@ -1179,7 +1179,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     __start__.status = NOT_STARTED
     continueRoutine = True
     # update component parameters for each repeat
-    read_start.setSound('resource/ready_to_begin.wav', secs=1.6, hamming=True)
+    read_start.setSound('resource/ready_to_begin.wav', secs=1.8, hamming=True)
     read_start.setVolume(1.0, log=False)
     read_start.seek(0)
     # store start times for __start__
@@ -1256,7 +1256,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # if read_start is stopping this frame...
         if read_start.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > read_start.tStartRefresh + 1.6-frameTolerance or read_start.isFinished:
+            if tThisFlipGlobal > read_start.tStartRefresh + 1.8-frameTolerance or read_start.isFinished:
                 # keep track of stop time/frame for later
                 read_start.tStop = t  # not accounting for scr refresh
                 read_start.tStopRefresh = tThisFlipGlobal  # on global time
