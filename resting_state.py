@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.2a1),
-    on Thu Oct 10 14:20:17 2024
+    on Thu Oct 10 14:45:31 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -618,7 +618,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "instruct_ec" ---
     text_instruct = visual.TextStim(win=win, name='text_instruct',
-        text='This is a resting task. It is designed to measure brain waves when we are not thinking hard or trying to do anything.\n\nFor the next 3 minutes, please close your eyes, and relax. Just let your mind wander. Try not to move, and try to stay awake.\n\nWhen the 3-minute is up, you will hear a tone to indicate the completion.\n\n\nPress any of the white keys to begin',
+        text='This is a resting task. It is designed to measure brain waves when we are not thinking hard or trying to do anything.\n\nFor the next 3 minutes, please close your eyes, and relax. Just let your mind wander. Try not to move, and try to stay awake.\n\nWhen the 3-minute is up, you will hear a tone to indicate the completion.\n\n\nPress the green key to begin',
         font='Arial',
         units='norm', pos=(0, 0), draggable=False, height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -653,7 +653,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "instruct_eo" ---
     text_instruct_2 = visual.TextStim(win=win, name='text_instruct_2',
-        text='Great! That is the first of two parts in this task.\n\nFor the next 3 minutes, please look at the fixation cross on the screen, and relax. As before, just let your mind wander. You may blink normally, but try to keep your eyes open, and try not to move.\n\nWhen the 3-minute is up, the cross will disappear to indicate the completion.\n\n\nPress any of the white keys to begin',
+        text='Great! That is the first of two parts in this task.\n\nFor the next 3 minutes, please look at the fixation cross on the screen, and relax. As before, just let your mind wander. You may blink normally, but try to keep your eyes open, and try not to move.\n\nWhen the 3-minute is up, the cross will disappear to indicate the completion.\n\n\nPress the green key to begin',
         font='Arial',
         units='norm', pos=(0, 0), draggable=False, height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -1413,7 +1413,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             win.callOnFlip(key_instruct.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(key_instruct.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if key_instruct.status == STARTED and not waitOnFlip:
-            theseKeys = key_instruct.getKeys(keyList=['3', '4', '5', '6'], ignoreKeys=["escape"], waitRelease=True)
+            theseKeys = key_instruct.getKeys(keyList=['1'], ignoreKeys=["escape"], waitRelease=True)
             _key_instruct_allKeys.extend(theseKeys)
             if len(_key_instruct_allKeys):
                 key_instruct.keys = _key_instruct_allKeys[-1].name  # just the last key pressed
@@ -1735,7 +1735,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             win.callOnFlip(key_instruct_2.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(key_instruct_2.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if key_instruct_2.status == STARTED and not waitOnFlip:
-            theseKeys = key_instruct_2.getKeys(keyList=['3', '4', '5', '6'], ignoreKeys=["escape"], waitRelease=True)
+            theseKeys = key_instruct_2.getKeys(keyList=['1'], ignoreKeys=["escape"], waitRelease=True)
             _key_instruct_2_allKeys.extend(theseKeys)
             if len(_key_instruct_2_allKeys):
                 key_instruct_2.keys = _key_instruct_2_allKeys[-1].name  # just the last key pressed
