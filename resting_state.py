@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.2a1),
-    on Wed Sep 25 11:41:25 2024
+    on Thu Oct 10 12:54:56 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -527,7 +527,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "_welcome" ---
     text_welcome = visual.TextStim(win=win, name='text_welcome',
-        text='Welcome! This task will take approximately 7 minutes.\n\nBefore we explain the task, we need to first calibrate the eyetracking camera. Please sit in a comfortable position with your head on the chin rest. Once we begin, it is important that you stay in the same position throughout this task.\n\nPlease take a moment to adjust the chair height, chin rest, and sitting posture. Make sure that you feel comfortable and can stay still for a while.\n\n\nWhen you are ready, press the spacebar',
+        text='Welcome! This task will take approximately 7 minutes.\n\nBefore we explain the task, we need to first calibrate the eyetracking camera. Please sit in a comfortable position with your head on the chin rest. Once we begin, it is important that you stay in the same position throughout this task.\n\nPlease take a moment to adjust the chair height, chin rest, and sitting posture. Make sure that you feel comfortable and can stay still for a while.\n\n\nWhen you are ready, press any of the white keys to begin',
         font='Arial',
         units='norm', pos=(0, 0), draggable=False, height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -545,7 +545,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "_et_instruct" ---
     text_et = visual.TextStim(win=win, name='text_et',
-        text='During the calibration, you will see a target circle moving around the screen. Please try to track it with your eyes.\n\nMake sure to keep looking at the circle when it stops, and follow it when it moves. It is important that you keep your head on the chin rest once this part begins.\n\n\nPress the spacebar when you are ready, and our team will start the calibration for you',
+        text='During the calibration, you will see a target circle moving around the screen. Please try to track it with your eyes.\n\nMake sure to keep looking at the circle when it stops, and follow it when it moves. It is important that you keep your head on the chin rest once this part begins.\n\n\nPress any of the white keys when you are ready, and our team will start the calibration for you',
         font='Arial',
         units='norm', pos=(0, 0), draggable=False, height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -618,7 +618,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "instruct_ec" ---
     text_instruct = visual.TextStim(win=win, name='text_instruct',
-        text='This is a resting task. It is designed to measure brain waves when we are not thinking hard or trying to do anything.\n\nFor the next 3 minutes, please close your eyes, and relax. Just let your mind wander. Try not to move, and try to stay awake.\n\nWhen the 3-minute is up, you will hear a tone to indicate the completion.\n\n\nPress the spacebar to begin',
+        text='This is a resting task. It is designed to measure brain waves when we are not thinking hard or trying to do anything.\n\nFor the next 3 minutes, please close your eyes, and relax. Just let your mind wander. Try not to move, and try to stay awake.\n\nWhen the 3-minute is up, you will hear a tone to indicate the completion.\n\n\nPress any of the white keys to begin',
         font='Arial',
         units='norm', pos=(0, 0), draggable=False, height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -653,7 +653,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "instruct_eo" ---
     text_instruct_2 = visual.TextStim(win=win, name='text_instruct_2',
-        text='Great! That is the first of two parts in this task.\n\nFor the next 3 minutes, please look at the fixation cross on the screen, and relax. As before, just let your mind wander. You may blink normally, but try to keep your eyes open, and try not to move.\n\nWhen the 3-minute is up, the cross will disappear to indicate the completion.\n\n\nPress the spacebar to begin',
+        text='Great! That is the first of two parts in this task.\n\nFor the next 3 minutes, please look at the fixation cross on the screen, and relax. As before, just let your mind wander. You may blink normally, but try to keep your eyes open, and try not to move.\n\nWhen the 3-minute is up, the cross will disappear to indicate the completion.\n\n\nPress any of the white keys to begin',
         font='Arial',
         units='norm', pos=(0, 0), draggable=False, height=0.1, wrapWidth=1.8, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -803,7 +803,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             win.callOnFlip(key_welcome.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(key_welcome.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if key_welcome.status == STARTED and not waitOnFlip:
-            theseKeys = key_welcome.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
+            theseKeys = key_welcome.getKeys(keyList=['3', '4', '5', '6'], ignoreKeys=["escape"], waitRelease=True)
             _key_welcome_allKeys.extend(theseKeys)
             if len(_key_welcome_allKeys):
                 key_welcome.keys = _key_welcome_allKeys[-1].name  # just the last key pressed
@@ -958,7 +958,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             win.callOnFlip(key_et.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(key_et.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if key_et.status == STARTED and not waitOnFlip:
-            theseKeys = key_et.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
+            theseKeys = key_et.getKeys(keyList=['3', '4', '5', '6'], ignoreKeys=["escape"], waitRelease=True)
             _key_et_allKeys.extend(theseKeys)
             if len(_key_et_allKeys):
                 key_et.keys = _key_et_allKeys[-1].name  # just the last key pressed
@@ -1346,7 +1346,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     key_instruct.keys = []
     key_instruct.rt = []
     _key_instruct_allKeys = []
-    read_instruct.setSound('resource/instruct_ec_reading_audio.wav', hamming=True)
+    read_instruct.setSound('resource/instruct_ec.wav', hamming=True)
     read_instruct.setVolume(1.0, log=False)
     read_instruct.seek(0)
     # store start times for instruct_ec
@@ -1413,7 +1413,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             win.callOnFlip(key_instruct.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(key_instruct.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if key_instruct.status == STARTED and not waitOnFlip:
-            theseKeys = key_instruct.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
+            theseKeys = key_instruct.getKeys(keyList=['3', '4', '5', '6'], ignoreKeys=["escape"], waitRelease=True)
             _key_instruct_allKeys.extend(theseKeys)
             if len(_key_instruct_allKeys):
                 key_instruct.keys = _key_instruct_allKeys[-1].name  # just the last key pressed
@@ -1668,7 +1668,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     key_instruct_2.keys = []
     key_instruct_2.rt = []
     _key_instruct_2_allKeys = []
-    read_instruct_2.setSound('resource/instruct_eo_reading_audio.wav', hamming=True)
+    read_instruct_2.setSound('resource/instruct_eo.wav', hamming=True)
     read_instruct_2.setVolume(1.0, log=False)
     read_instruct_2.seek(0)
     # store start times for instruct_eo
@@ -1735,7 +1735,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             win.callOnFlip(key_instruct_2.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(key_instruct_2.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if key_instruct_2.status == STARTED and not waitOnFlip:
-            theseKeys = key_instruct_2.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=True)
+            theseKeys = key_instruct_2.getKeys(keyList=['3', '4', '5', '6'], ignoreKeys=["escape"], waitRelease=True)
             _key_instruct_2_allKeys.extend(theseKeys)
             if len(_key_instruct_2_allKeys):
                 key_instruct_2.keys = _key_instruct_2_allKeys[-1].name  # just the last key pressed
