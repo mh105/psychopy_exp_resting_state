@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.2a1),
-    on Mon Oct 14 10:48:27 2024
+    on Thu Oct 24 15:53:49 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -87,8 +87,7 @@ if devices:
     # Start EEG recording
     print("Sending trigger code 126 to start EEG recording...")
     dev.activate_line(bitmask=126)  # trigger 126 will start EEG
-    print("Waiting 10 seconds for the EEG recording to start...")
-    print("")
+    print("Waiting 10 seconds for the EEG recording to start...\n")
     core.wait(10)  # wait 10s for the EEG system to start recording
 
     # Marching lights test
@@ -98,7 +97,7 @@ if devices:
         dev.activate_line(lines=line)
         core.wait(0.5)  # wait 500ms between two consecutive triggers
     dev.con.set_digio_lines_to_mask(0)  # XidDevice.clear_all_lines()
-    print("EEG system is now ready for the experiment to start.")
+    print("EEG system is now ready for the experiment to start.\n")
 
 else:
     # Dummy XidDevice for code components to run without C-POD connected
@@ -110,7 +109,7 @@ else:
 
 
     print("WARNING: No C-POD connected for this session! "
-          "You must start/stop EEG recording manually!")
+          "You must start/stop EEG recording manually!\n")
     dev = dummyXidDevice()
 
 # --- Setup global variables (available in all functions) ---
@@ -594,6 +593,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     task_start_code = 100
     # special code 101 (task ID for 3min EC + 3min EO resting state task)
     task_ID_code = 101
+    print("Starting experiment: < Resting State Task >. Task ID:", task_ID_code)
     
     ##GENERAL TRIGGER VALUES##
     # special code 122 (block start)
