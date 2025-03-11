@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.2a1),
-    on Fri Nov 22 15:24:03 2024
+    on Mon Mar 10 18:39:17 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -679,6 +679,13 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
+    blank_text = visual.TextStim(win=win, name='blank_text',
+        text=' ',
+        font='Arial',
+        pos=(0, 0), draggable=False, height=0.1, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-1.0);
     
     # --- Initialize components for Routine "__end__" ---
     text_thank_you = visual.TextStim(win=win, name='text_thank_you',
@@ -1816,7 +1823,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # create an object to store info about Routine eyes_open
     eyes_open = data.Routine(
         name='eyes_open',
-        components=[text_eo],
+        components=[text_eo, blank_text],
     )
     eyes_open.status = NOT_STARTED
     continueRoutine = True
@@ -1847,7 +1854,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Run Routine "eyes_open" ---
     eyes_open.forceEnded = routineForceEnded = not continueRoutine
-    while continueRoutine and routineTimer.getTime() < 180.0:
+    while continueRoutine and routineTimer.getTime() < 180.3:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -1888,6 +1895,36 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 # update status
                 text_eo.status = FINISHED
                 text_eo.setAutoDraw(False)
+        
+        # *blank_text* updates
+        
+        # if blank_text is starting this frame...
+        if blank_text.status == NOT_STARTED and tThisFlip >= 180.0-frameTolerance:
+            # keep track of start time/frame for later
+            blank_text.frameNStart = frameN  # exact frame index
+            blank_text.tStart = t  # local t and not account for scr refresh
+            blank_text.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(blank_text, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            blank_text.status = STARTED
+            blank_text.setAutoDraw(True)
+        
+        # if blank_text is active this frame...
+        if blank_text.status == STARTED:
+            # update params
+            pass
+        
+        # if blank_text is stopping this frame...
+        if blank_text.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > blank_text.tStartRefresh + 0.3-frameTolerance:
+                # keep track of stop time/frame for later
+                blank_text.tStop = t  # not accounting for scr refresh
+                blank_text.tStopRefresh = tThisFlipGlobal  # on global time
+                blank_text.frameNStop = frameN  # exact frame index
+                # update status
+                blank_text.status = FINISHED
+                blank_text.setAutoDraw(False)
         # Run 'Each Frame' code from trigger_eo
         if text_eo.status == STARTED and not stimulus_pulse_started:
             win.callOnFlip(dev.activate_line, bitmask=eyes_open_start_code)
@@ -1945,7 +1982,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     elif eyes_open.forceEnded:
         routineTimer.reset()
     else:
-        routineTimer.addTime(-180.000000)
+        routineTimer.addTime(-180.300000)
     thisExp.nextEntry()
     
     # --- Prepare to start Routine "__end__" ---

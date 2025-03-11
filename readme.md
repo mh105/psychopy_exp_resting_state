@@ -1,7 +1,8 @@
 # Resting state task
-Last edit: 11/22/2024
+Last edit: 03/10/2025
 
 ## Edit history
+- 03/10/2025 by Alex He - added a blank text of 0.3s to make eyes open period duration between triggers more precise
 - 11/22/2024 by Alex He - removed summary csv saving since no trialList used
 - 10/24/2024 by Alex He - added a print message of task ID at the onset of task
 - 10/12/2024 by Alex He - increased logging granularity from warning to debug (maximal level)
